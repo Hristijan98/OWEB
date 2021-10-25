@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="= "utf-8">
+            <title>My WEB</title>
+          
+             <link rel="stylesheet" href="../css/style.css">
+             <style type="text/css">
+               
+                 header{
+                     background:teal;
+                     padding: 20px;
+                     
+                 }
+                 section {
+                     background: rgb(212, 188, 188);
+                     color: rgb(255, 251, 251);
+                     padding: 20px;
+                     display: flex;
+                     flex-direction: row;
+                 }
+
+                 div{
+                     background:cyan;
+                     margin: auto;
+                     width: 100px;
+                 }
+                 ul {
+                     margin: 0;
+                     padding: 0;
+                     list-style-type: none;
+                 }
+                 li {
+                     display: inline-block;
+                     margin-right:  20px;
+                 }
+                 footer{
+                     background:black;
+                     padding: 10px 20px;
+                 }
+                 body{
+			background-image:url(stars_in_space.jpg);
+			background-size: cover;
+			background-attachment: fixed;
+            background-position: center;
+            color:white;
+		}
+   
+             </style>
+
+            
+
+
+        </head>
+
+        <body>
+           
+            <header>
+
+                <nav>
+                    <ul>
+                        <li><a href="Home.html"><button >Home</button></a></li>
+                        <li><a href="Favorite things.html"><button>Favorite things</button></a></li>
+                        <li><a href="Gallery.html"><button>Gallery</button></a></li>
+                        <li><a href="My blog.html"><button>My blog</button></a></li>
+                        <li><a href="Visitor survey.html"><button>Visitor survey</button></a></li>
+                        <li><a href="Contact.html"><button>Contact</button></a></li>
+                    </ul>
+                </nav>
+                <h1>Visitor survey</h1>
+            </header>
+            <h1><center>Share your review so we can improve our website!</center></h1>  
+      <center>  <form action="https://www.codetextpro.com/p/contact-us.html" method="post">   
+        <fieldset>    
+        <legend>     
+        Your Details:    
+        </legend>    
+        <label>     
+        Name:     <input type="text" name="name" size="30" maxlength="100">    
+        </label>    
+        <br />
+        <label>     
+            Email:     <input type="email" name="email" size="30" maxlength="100">    
+            </label>    
+            <br />  
+            Phone:     <input type="text" name="name" size="30" maxlength="100">    
+        </label>    
+        <br />
+
+        <form action="/action_page.php">
+            <p>Please select your gender:</p>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            
+          
+            <br>  
+          
+            <p>Please select your age:</p>
+            <input type="radio" id="age1" name="age" value="30">
+            <label for="age1">0 - 28</label><br>
+            <input type="radio" id="age2" name="age" value="60">
+            <label for="age2">29 - 70</label><br>  
+            <input type="radio" id="age3" name="age" value="100">
+            <label for="age3">70+</label><br><br>
+          
+          </form>
+            <br />  
+            <p>What was your mood today?</p>
+            <form action="/action_page.php" method="get">
+                <input type="checkbox" name="mood1" value="party">
+                <label for="vehicle1"> Party</label><br>
+                <input type="checkbox" name="mood2" value="chill">
+                <label for="vehicle2"> Chill</label><br>
+                <input type="checkbox" name="mood3" value="workout" checked>
+                <label for="vehicle3">Workout</label><br>
+                <input type="checkbox" name="mood4" value="sleeping">
+                <label for="vehicle1"> Pre-Sleeping</label><br>
+              </form>
+
+        </fieldset>   
+        <br />   
+        <fieldset>    
+        <legend>     Your Review:    </legend>    
+        <p>     
+        <label for="hear-about">      
+        How did you hear about me?     
+        </label>     
+        <select name="referrer" id="hear-about">      
+        <option value="google">Instagram</option>      
+        <option value="friend">Friend</option>      
+        <option value="advert">Facebook</option> 
+        <option value="advert">Linkedin</option>      
+        <option value="other">Other</option>
+        </select>
+        </p>
+        </p>
+        
+         Would you visit again?     
+        <br />     
+        <label>      
+        <input type="radio" name="rating" value="yes" />      
+        Yes     
+        </label>     
+        <label>      
+        <input type="radio" name="rating" value="no" />      
+        No     
+        </label>     
+        <label>      
+        <input type="radio" name="rating" value="maybe" />      
+        Maybe     
+        </label>    
+        </p>    
+        <p>     
+        <label for="comments">      
+        Comments:     
+        </label>     
+        <br />     
+        <textarea rows="4" cols="40" id="comments">     
+        </textarea>   
+         </p>    
+        <label>     
+        <input type="checkbox" name="subscribe" checked="checked" />      
+        Sign me up for email updates    
+        </label>    
+        <br />    
+        <input type="submit" value="Submit review" />
+        <input type="reset" value="Clear review" />  
+        <p>Press <a href="Home.html">here</a> to get to the Home page.</p>
+        </fieldset>  
+        </form> 
+           </center>
+
+
+
+        </body>
+
+
+
+
+
+
+    </html>
