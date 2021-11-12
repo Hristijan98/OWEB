@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="= " utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <title>My WEB</title>
+
+    
+        <script>
+            function blog(){
+    var tekst=document.getElementById("blogtxt").value;
+    var datum=document.getElementById("datum").value;
+    var tema=document.getElementById("tema").value;
+    var ime = document.getElementById("ime").value
+
+    if(tekst != '' && datum != '' && tema != '' && ime !=''){
+      var hed1 = document.createElement("h2")
+      var para = document.createElement("P");
+      var hed3=document.createElement("h3");
+      var hed2=document.createElement("h2");
+    para.innerHTML = tekst;
+    hed3.innerHTML=datum;
+    hed2.innerHTML=tema;
+    var div=document.createElement("div");
+    div.classList.add('blog');
+    div.appendChild(hed1)
+    div.appendChild(hed2);
+    div.appendChild(hed3);
+    div.appendChild(para);
+    document.getElementById("blogtekst").appendChild(div);
+    document.getElementById("blogtxt").value='';
+    document.getElementById("datum").value='';
+    document.getElementById("tema").value='';
+    document.getElementById("ime")
+    }
+  }
+
+  function izbrisiBlog(){
+    document.getElementById("blogtxt").value='';
+    document.getElementById("datum").value='';
+    document.getElementById("tema").value='';
+    document.getElementById("ime").value='';
+  }
+  window.onbeforeunload=function(){
+    localStorage.setItem("blog", $('#blogtekst').html());
+  }
+
+  window.onload=function(){
+    var blog=localStorage.getItem("blog");
+    if(blog != null) $('#blogtekst').html(`${blog}`);
+}
+
+        </script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(blog1.png);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        nav {
+            width: 100%;
+            overflow: auto;
+            background-image: url(prva.jpg);
+        }
+
+        ul {
+            padding: 0;
+            margin: 0 0 0 250px;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            width: 100%;
+            display: block;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-family: arial;
+            color: white;
+            text-align: center;
+
+        }
+
+        li a:hover {
+            background: gray;
+            text-transform: uppercase;
+        }
+
+        .logo img {
+            position: absolute;
+            margin-top: 5px;
+            margin-left: 1px;
+
+        }
+
+        .gotopbtn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: #f11533;
+            bottom: 40px;
+            right: 50px;
+
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 22px;
+        }
+
+        .inner-footer {
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+
+        .social-links {
+            display: flex;
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-links ul {
+            padding: 5px;
+            display: flex;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+
+        .social-items {
+            list-style: none;
+        }
+
+        .social-items a {
+            padding: 10px 20px;
+            font-size: 35px;
+            color: #6cccc6;
+
+
+        }
+
+        .quick-links {
+            display: flex;
+            width: 1060px;
+            height: 70px;
+            margin: auto;
+
+        }
+
+        .quick-links ul {
+            display: flex;
+        }
+
+        .quick-items {
+            list-style: none;
+
+        }
+
+        .quick-items a {
+            text-decoration: none;
+            padding: 0px, 15px;
+            font-size: 18px;
+            color: cyan;
+            transition: all .25s;
+        }
+
+        .quick-items a:hover {
+            color: cyan;
+        }
+
+        .outer-footer {
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            background-image: url(prva.jpg);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+
+
+
+
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+
+
+
+
+
+
+        .active {
+            color: rgb(218, 15, 42);
+        }
+
+        .hero {
+            height: 55vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 span {
+            color: crimson;
+        }
+
+
+
+        .card {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            background: #65e2cd;
+        }
+
+        .card>div {
+            padding: 2rem;
+        }
+
+        .card:nth-child(even) img {
+            order: 2;
+        }
+
+        .card img {
+            height: 450px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .publish-date {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            text-transform: capitalize;
+            background: rgb(13, 182, 126);
+            color: rgb(233, 241, 245);
+            padding: .8rem 1.8rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            transition: opacity .2s ease;
+        }
+
+
+
+
+
+        @media(max-width: 1080px) {
+            .container {
+                padding: 0 5%;
+            }
+        }
+
+        @media(max-width: 700px) {
+            body {
+                font-size: 1.2rem;
+            }
+
+            .hero h1,
+
+
+            .card {
+                display: block;
+            }
+        }
+
+        .card1 {
+            color: rgb(22, 22, 20);
+            background-image: url(coment1.webp);
+            background-position: 500px;
+            background-repeat: no-repeat;
+            background-position:center;
+            
+            
+
+        }
+        .com{
+            background-image: url(border.jpg);
+            font-size: 18px;
+            border: 10px solid turquoise;
+            color:black;
+            float: center;
+            max-width: 25%;
+            display: left;
+            margin: auto;
+            
+            
+        }
+        
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div class="logo">
+        <a href='#'> <img src="logo.png" width="100" height="50"> </a>
+    </div>
+    <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+
+
+    <nav>
+
+
+
+        <ul>
+
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Favorite things.html">Favorite things</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="My blog.html">My blog</a></li>
+            <li><a href="Visitor survey.html">Visitor survey</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+
+
+
+        </ul>
+
+
+    </nav>
+    </a>
+
+    <div class="container">
+
+
+        <section class="hero">
+            <h1>Most <span>beautiful</span> Mountains in Switzerland</h1>
+
+        </section>
+
+        <main>
+            <section class="card">
+                <img src="mount-san-salvatore.jpg" weight="120" height="120" alt="Plant 1">
+                <div>
+                    <h3>1.Mount San Salvatore</h3>
+                    <p class="publish-date">Elevation: 912m</p>
+                    <p>Mount San Salvatore is part of the Lepontine Alps, which are located in the northwestern part of
+                        the Alps. It is situated in the canton of Ticino, overlooking the city of Lugano. The lake of
+                        Lugano divides this mountain and the state of Italy.</p>
+                    <a href="https://www.montesansalvatore.ch/en/" class="btn">Read more</a>
+                </div>
+            </section>
+
+            <section class="card" data-aos="fade-left">
+                <img src="mount-lema.jpg" weight="120" height="120" alt="Plant 2">
+                <div>
+                    <h3>2. Mount Lema</h3>
+                    <p class="publish-date">Elevation: 1,619m</p>
+                    <p>Mount Lema, the perfect destination for mountain bike riders and hang-gliding flight lovers. Part
+                        of the Lugano Prealps, the mountain isn’t limited to these two activities. It is a very
+                        welcoming place for hikers of every level, offering them several trails and tracks to walk
+                        through. Monte Lema is known as the starting point of the famous mountain hike called
+                        Traversata. This hike leads to Mount Tamaro, situated close to the border between Switzerland
+                        and Italy. Its peak can easily be reached using the cable car from the village of Miglieglia.
+                        The cable car is available from the end of March to the beginning of November.</p>
+                    <a href="https://www.schweizmobil.ch/en/hiking-in-switzerland/services/places-of-interest/sehenswuerdigkeit-0527.html"
+                        class="btn">Read more</a>
+                </div>
+            </section>
+
+            <section class="card" data-aos="fade-right">
+                <img src="mount-rigi.jpg" weight="120" height="120" alt="Plant 3">
+                <div>
+                    <h3>3. Mount Rigi</h3>
+                    <p class="publish-date">Elevation: 1,798m</p>
+                    <p>Mount Rigi, known by the locals as the Queen of the Mountains, is a breathtaking mountain massif
+                        in the Alps. It is located in the center of Switzerland near the cities of Zurich and Luzern.
+                        You can visit this destination any time you want as it offers the best conditions to its
+                        visitors in every season. However, if you are going to visit it, the morning would be the best
+                        time. It tends to get covered by clouds around noon.</p>
+                    <a href="https://www.expatolife.com/mount-rigi-kulm-switzerland/" class="btn">Read more</a>
+                </div>
+            </section>
+
+            <section class="card" data-aos="fade-left">
+                <img src="mount-pilatus.jpg" weight="120" height="120" alt="Plant 4">
+                <div>
+                    <h3>4. Mount Pilatus
+                    </h3>
+                    <p class="publish-date">Elevation: 2,128m</p>
+                    <p>The magnificent Pilatus, or as it is referred to, Mount Pilatus, is a pretty mountain massif. It
+                        is located in the center of Switzerland. Its central position makes this mountain part of three
+                        cantons: Obwalden, Nidwalden, and Luzern. The highest peaks of this mountain area are situated
+                        on the border between Obwalden and Nidwalden.</p>
+                    <a href="https://en.wikipedia.org/wiki/Pilatus_(mountain)" class="btn">Read more</a>
+                </div>
+            </section>
+
+            <section class="card" data-aos="fade-right">
+                <img src="mount-parsenn.jpg" alt="Plant 5">
+                <div>
+                    <h3>5. Mount Parsenn</h3>
+                    <p class="publish-date">Elevation: 2,220m</p>
+                    <p>As one of the fascinating mountains of Davos, Parsenn is mostly known as a ski resort by the
+                        locals as well as tourists.
+                        It is the largest one from the five ski resorts there, and it offers ski enthusiasts 35 ski
+                        runs. The best time to visit
+                        this mountain is around the time it opens its doors to ski admirers, from the last week of
+                        November to the last week of
+                        April. One of the reasons why this mountain is so popular among skiers is because its ski runs
+                        are suitable for all
+                        levels of skiers. You can access the mountain from Davos by the Parsenn’s funicular railway, and
+                        from Kloster by
+                        Gotschna cable car.</p>
+                    <a href="https://www.davos.ch/en/discover/mountains/parsenn" class="btn">Read more</a>
+                </div>
+            </section>
+        </main>
+    </div>
+    <center>
+        <p>Please leave a comment </p>
+        <section id="blog">
+        <section class="card1" data-aos="fade-left">
+           
+            
+                
+                <p><label>
+                    <input id="ime" style="margin-left: 0px;width: 250px ;"class="input" type="text" placeholder="Username:">
+               </label>
+            
+               </p>
+                <p><label>
+                     <input id="tema" style="margin-left: 0px;width: 250px ;"class="input" type="text" placeholder="Discussion:">
+                </label>
+            
+                </p>
+                <p>
+                    <textarea id="blogtxt" placeholder="Write a text " name="tema" rows="5" cols="50" required></textarea>
+                </p>
+                
+                <p><label>Date:
+                    <input id="datum" type="date" value="datum" required><br>
+                    <input onclick="blog()" class="kopce" type="submit" value="Send">
+                    <input onclick="izbrisiBlog()" class ="kopce" type="reset" value="Delete">
+                </label></p>
+                
+
+                <div class="com">
+                <div id="blogtekst"></div> 
+            </div>
+
+           
+            
+                <p>
+             
+                </p>
+            
+            </div> 
+            </section>
+        </section>
+        </section>
+    </center>
+
+    <footer class='footer'>
+        <div class='inner-footer'>
+            <div class='social links'>
+                <ul>
+                    <li class="social-items"><a href="https://www.facebook.com/hristijan.ivanoski.1/"><i
+                                class="fab fa-facebook-square"></i></a></li>
+                    <li class="social-items"><a href="https://github.com/Hristijan98/OWEB"><i
+                                class="fab fa-github-square"></i></a></li>
+                    <li class="social-items"><a href="https://www.instagram.com/hristijan.ivanoski/"><i
+                                class="fab fa-instagram"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="quick-links">
+                <ul>
+                    <li class="quick-items"><a href="Home.html">Home</a></li>
+                    <li class="quick-items"><a href="Favorite things.html">Favorite things</a></li>
+                    <li class="quick-items"><a href="Gallery.html">Gallery</a></li>
+                    <li class="quick-items"><a href="My blog.html">My Blog</a></li>
+                    <li class="quick-items"><a href="Visitor survey.html">Visitor survey</a></li>
+                    <li class="quick-items"><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="outer-footer">
+            Copyright &copy; Web Coding Pro.All Rights Reserved
+
+    </footer>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>
