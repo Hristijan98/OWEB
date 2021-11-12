@@ -1,81 +1,555 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="= "utf-8">
-            <title>My WEB</title>
-          
-             <link rel="stylesheet" href="../css/style.css">
-             <style type="text/css">
-                 body{
-                     background-image:url(galerija.png);
-                     background-size: cover;
-			background-attachment: fixed;
-            background-position: center;
-            color:greenyellow;
-                 }
-                 header{
-                     background:teal;
-                     padding: 20px;
-                 }
-                 section {
-                     background: white;
-                     color: gray;
-                     padding: 20px;
-                     display: flex;
-                     flex-direction: row;
-                 }
+<html>
 
-                 div{
-                     background:cyan;
-                     margin: auto;
-                     width: 100px;
-                 }
-                 ul {
-                     margin: 0;
-                     padding: 0;
-                     list-style-type: none;
-                 }
-                 li {
-                     display: inline-block;
-                     margin-right:  20px;
-                 }
-                 footer{
-                     background:black;
-                     padding: 10px 20px;
-                 }
-   
-             </style>
+<head>
+    <meta charset="= " utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <title>My WEB</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script>
+        function getSavedValuePost(v) {
+            if (!localStorage.getItem(v)) {
+                localStorage.setItem(v, "");
+                return "";
+            }
+            return localStorage.getItem(v);
+        }
+
+        function getSavedValue(v) {
+            if (!localStorage.getItem(v)) {
+                localStorage.setItem(v, 0);
+                return 0;
+            }
+            return localStorage.getItem(v);
+        }
+
+        function getSavedValueComments(v) {
+            if (!localStorage.getItem(v)) {
+                localStorage.setItem(v, "");
+                return "";
+            }
+            return localStorage.getItem(v);
+        }
+
+        var ids;
+        var i;
+        var like;
+        function countLikes(clicked_id) {
+            ids = "l" + clicked_id;
+            like = parseInt(localStorage.getItem(ids)) + 1;
+            document.getElementById(ids).innerHTML = like;
+            localStorage.setItem(ids, like);
+        }
+
+        var com;
+        var scom;
+        var coms;
+        var id;
+        function addComment(clicked_id) {
+            com = window.prompt("Please write your comment:");
+
+            ids = "p" + (clicked_id - 100);
+            scom = getSavedValueComments(ids);
+            document.getElementById(ids).innerHTML = scom + com + "<br>";
+
+            scom = scom + com + "<br>";
+            localStorage.setItem(ids, scom);
+
+            ids = "s" + (clicked_id - 100);
+            coms = parseInt(localStorage.getItem(ids)) + 1;
+            document.getElementById(ids).innerHTML = coms;
+            localStorage.setItem(ids, coms);
+        }
+        var curr;
+        function postIt() {
+            var title = document.getElementById("myTitle").value;
+            var text = document.getElementById("myText").value;
+            var d = new Date()
+            d.getDate();
+
+            var cmd = '<div class="card"> <h2>' + title + '</h2> <p>' + text + '</p> <a onclick="Share.facebook()"> <i class="fa fa-facebook" style="font-size:25px; margin-right=25px; margin-left=25px; color:#3b5998; transition: color 0.3s ease;" ></i></a> <a onclick="Share.twitter()"> <i class="fa fa-twitter" style="font-size:25px; margin-right=25px; margin-left=25px; color:#3b5998; transition: color 0.3s ease;"></i></a> <p style="font-size:10px;">' + d + '</p> </div>';
+            curr = getSavedValuePost("posted");
+            document.getElementById("posted").innerHTML = cmd + curr;
+
+            curr = cmd + curr;
+            localStorage.setItem("posted", curr);
+        }
+    </script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </script>
+
+
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(galerija.png);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        nav {
+            width: 100%;
+            overflow: auto;
+            background-image: url(prva.jpg);
+        }
+
+        ul {
+            padding: 0;
+            margin: 0 0 0 250px;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            width: 100%;
+            display: block;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-family: arial;
+            color: white;
+            text-align: center;
+
+        }
+
+        li a:hover {
+            background: gray;
+            text-transform: uppercase;
+        }
+
+        .logo img {
+            position: absolute;
+            margin-top: 5px;
+            margin-left: 1px;
+
+        }
+
+        .img {
+            background-color: magenta;
+        }
+
+        .gotopbtn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: #14b1c5;
+            bottom: 40px;
+            right: 50px;
+
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 22px;
+        }
+
+        .inner-footer {
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+
+        .social-links {
+            display: flex;
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-links ul {
+            padding: 5px;
+            display: flex;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+
+        .social-items {
+            list-style: none;
+        }
+
+        .social-items a {
+            padding: 10px 20px;
+            font-size: 35px;
+            color: #6cccc6;
+
+
+        }
+
+        .quick-links {
+            display: flex;
+            width: 1060px;
+            height: 70px;
+            margin: auto;
+
+        }
+
+        .quick-links ul {
+            display: flex;
+        }
+
+        .quick-items {
+            list-style: none;
+
+        }
+
+        .quick-items a {
+            text-decoration: none;
+            padding: 0px, 15px;
+            font-size: 18px;
+            color: cyan;
+            transition: all .25s;
+        }
+
+        .quick-items a:hover {
+            color: cyan;
+        }
+
+        .outer-footer {
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            background-image: url(prva.jpg);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .wrapper {
+            height: 8%;
+            width: 1300px;
+            position: center;
+            background: linear-gradient(180deg, #0d0e0d, #29cfc7, #ee09d3);
+            border-radius: 1px;
+            cursor: default;
+            animation: animate 1.5s linear infinite;
+
+        }
+
+        .wrapper .display,
+        .wrapper span {
+            position: absolute;
+            top: 8%;
+            left: 1300px;
+            transform: translate(-50%, -50%);
+        }
+
+        .wrapper .display {
+            z-index: 999;
+            height: 85px;
+            width: 345px;
+            background: #18e45c;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .display #time {
+            line-height: 85px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #000c0b, #1ebb4d, #faf6f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animate 1.5s linear infinite;
+        }
+
+        @keyframes animate {
+            100% {
+                filter: hue-rotate(90deg);
+            }
+        }
+
+        .wrapper span {
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            background: inherit;
+        }
+
+        .wrapper span:first-child {
+            filter: blur(7px);
+        }
+
+        .wrapper span:last-child {
+            filter: blur(20px);
+        }
+
+        .container {
+            max-width: 50%;
+            margin: auto;
+            background-color: #e7e0b4;
+            overflow: auto;
+            width: 500px;
+            background-image: url(rain2.png);
+            background-repeat:inherit;
+          
+
+
+        }
+
+        .gallery {
+            margin: 50px;
+            border: 10px solid rgb(209, 230, 90);
+            float: center;
+            width: 390px;
+            background-image: url(border1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
+        .desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="logo">
+        <a href='#'> <img src="logo.png" width="100" height="50"> </a>
+    </div>
+    <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+
+
+
+
+    <nav>
+
+
+
+        <ul>
+
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Favorite things.html">Favorite things</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="My blog.html">My blog</a></li>
+            <li><a href="Visitor survey.html">Visitor survey</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+
+
+
+        </ul>
+
+
+    </nav>
+
+
+
+
+    <div class="wrapper">
+        <div class="display">
+            <div id="time"></div>
+        </div>
+        <span></span>
+        <span></span>
+    </div>
+    <script>
+        setInterval(() => {
+            const time = document.querySelector(".display #time");
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let day_night = "AM";
+            if (hours > 12) {
+                day_night = "PM";
+                hours = hours - 12;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            time.textContent = hours + ":" + minutes + ":" + seconds + " " + day_night;
+        });
+    </script>
+
+
+    <div class="container">
+
+        <div class="gallery">
+            <img src="Markovi-Kuli.jpg">
+            <div class="desc">Leave a like and comment</div>
+            <a id="1" onclick="countLikes(this.id)">
+                <i class="far fa-thumbs-up"></i>
+                <div id="l1" style="display: inline-block;">
+                    <script>document.getElementById("l1").innerHTML = getSavedValue("l1");</script>
+                </div></i>
+            </a>
+            <a id="101" onclick="addComment(this.id)">
+                <i class="far fa-comment"></i>
+                <div id="s1" style="display: inline-block;">
+                    <script>document.getElementById("s1").innerHTML = getSavedValue("s1");</script>
+                </div></i>
+            </a>
+
+            <div class="text" id="p1"></div>
+
+        </div>
+
+        <div class="gallery">
+            <img src="mogila.jpg">
+            <div class="desc">Leave a like and comment</div>
+            <a id="2" onclick="countLikes(this.id)"><i class="far fa-thumbs-up"></i>
+                <div id="l2" style="display: inline-block;">
+                    <script>document.getElementById("l2").innerHTML = getSavedValue("l2");</script>
+                </div></i>
+            </a>
+            <a id="102" onclick="addComment(this.id)"><i class="far fa-comment"></i>
+                <div id="s2" style="display: inline-block;">
+                    <script>document.getElementById("s2").innerHTML = getSavedValue("s2");</script>
+                </div></i>
+            </a>
+            <div class="text" id="p2"></div>
 
             
 
-
-        </head>
-
-        <body>
-           
-            <header>
-
-                <nav>
-                    <ul>
-                        <li><a href="Home.html"><button >Home</button></a></li>
-                        <li><a href="Favorite things.html"><button>Favorite things</button></a></li>
-                        <li><a href="Gallery.html"><button>Gallery</button></a></li>
-                        <li><a href="My blog.html"><button>My blog</button></a></li>
-                        <li><a href="Visitor survey.html"><button>Visitor survey</button></a></li>
-                        <li><a href="Contact.html"><button>Contact</button></a></li>
-                    </ul>
-                </nav>
-                <h1>Gallery</h1>
-            </header>
-           
+        </div>
 
 
+        <div class="gallery">
+            <img src="zalivot na koskite.jpg">
+            <div class="desc">Leave a like and comment</div>
+            <a id="3" onclick="countLikes(this.id)"><i class="far fa-thumbs-up"></i>
+                <div id="l3" style="display: inline-block;">
+                    <script>document.getElementById("l3").innerHTML = getSavedValue("l3");</script>
+                </div></i>
+            </a>
+            <a id="103" onclick="addComment(this.id)"><i class="far fa-comment"></i>
+                <div id="s3" style="display: inline-block;">
+                    <script>document.getElementById("s3").innerHTML = getSavedValue("s3");</script>
+                </div></i>
+            </a>
 
-        </body>
+            <div class="text" id="p3"></div>
+        </div>
+        <div class="gallery">
+            <img src="ochi3.jpg">
+            <div class="desc">Leave a like and comment</div>
+            <a id="4" onclick="countLikes(this.id)"><i class="far fa-thumbs-up"></i>
+                <div id="l4" style="display: inline-block;">
+                    <script>document.getElementById("l4").innerHTML = getSavedValue("l4");</script>
+                </div></i>
+            </a>
+            <a id="104" onclick="addComment(this.id)"><i class="far fa-comment"></i>
+                <div id="s4" style="display: inline-block;">
+                    <script>document.getElementById("s4").innerHTML = getSavedValue("s4");</script>
+                </div></i>
+            </a>
+            <div class="text" id="p4"></div>
+        </div>
+        <div class="gallery">
+            <img src="samoilova_tvrdina.jpg">
+            <div class="desc">Leave a like and comment</div>
+            <a id="5" onclick="countLikes(this.id)"><i class="far fa-thumbs-up"></i>
+                <div id="l5" style="display: inline-block;">
+                    <script>document.getElementById("l5").innerHTML = getSavedValue("l5");</script>
+                </div></i>
+            </a>
+            <a id="105" onclick="addComment(this.id)"><i class="far fa-comment"></i>
+                <div id="s5" style="display: inline-block;">
+                    <script>document.getElementById("s5").innerHTML = getSavedValue("s5");</script>
+                </div></i>
+            </a>
+            <div class="text" id="p5"></div>
+        </div>
+        <div class="gallery">
+            <img src="zrze.png">
+            <div class="desc">Leave a like and comment</div>
+            <a id="6" onclick="countLikes(this.id)"><i class="far fa-thumbs-up"></i>
+                <div id="l6" style="display: inline-block;">
+                    <script>document.getElementById("l6").innerHTML = getSavedValue("l6");</script>
+                </div></i>
+            </a>
+            <a id="106" onclick="addComment(this.id)"><i class="far fa-comment"></i>
+                <div id="s6" style="display: inline-block;">
+                    <script>document.getElementById("s6").innerHTML = getSavedValue("s6");</script>
+                </div></i>
+            </a>
+            <div class="text" id="p6"></div>
+
+        </div>
+
+    </div>
 
 
 
 
 
 
-    </html>
+
+
+
+
+
+
+
+
+
+
+    <footer class='footer'>
+        <div class='inner-footer'>
+            <div class='social links'>
+                <ul>
+                    <li class="social-items"><a href="https://www.facebook.com/hristijan.ivanoski.1/"><i
+                                class="fab fa-facebook-square"></i></a></li>
+                    <li class="social-items"><a href="https://github.com/Hristijan98/OWEB"><i
+                                class="fab fa-github-square"></i></a></li>
+                    <li class="social-items"><a href="https://www.instagram.com/hristijan.ivanoski/"><i
+                                class="fab fa-instagram"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="quick-links">
+                <ul>
+                    <li class="quick-items"><a href="Home.html">Home</a></li>
+                    <li class="quick-items"><a href="Favorite things.html">Favorite things</a></li>
+                    <li class="quick-items"><a href="Gallery.html">Gallery</a></li>
+                    <li class="quick-items"><a href="My blog.html">My Blog</a></li>
+                    <li class="quick-items"><a href="Visitor survey.html">Visitor survey</a></li>
+                    <li class="quick-items"><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="outer-footer">
+            Copyright &copy; Web Coding Pro.All Rights Reserved
+
+    </footer>
+
+
+</body>
+
+
+</html>
