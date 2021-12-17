@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="= " utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+    <title>My WEB</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        let add = () => {
+            let name = document.querySelector('.container1 #name');
+            let comment = document.querySelector('.container1 #comment');
+
+            if (name.value !== "" && comment.value != "") {
+
+                let list = document.querySelector('.list');
+                let time = new Date();
+                let h = time.getHours();
+                let m = time.getMinutes();
+                let s = time.getSeconds();
+                let now = h + " : " + m + " : " + s;
+                let list_item = document.createElement("l1");
+
+                list_item.innerHTML = `
+<span>
+<p>${name.value} ${now}</p> 
+</span>
+<p>${comment.value}</p>
+`;
+                list.append(list_item);
+            }
+
+            if (name.value == "" || comment.value == "") {
+                let list = document.querySelector('.list');
+                let list_item = document.createElement("l2");
+                var warn = 'Please enter name & comment!';
+                list_item.innerHTML = `
+<span>
+<p>${warn}</p> 
+</span>
+`;
+                list.append(list_item);
+            }
+            name.value = comment.value = "";
+        } 
+    </script>
+    <!--ZA komentiranje posledno -->
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput1").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myDIV1 *").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <!--Za baranje planini-->
+
+
+
+
+    <link rel="stylesheet" href="../css/style.css">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(blog1.png);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        nav {
+            width: 100%;
+            overflow: auto;
+            background-image: url(prva.jpg);
+        }
+
+        ul {
+            padding: 0;
+            margin: 0 0 0 250px;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            width: 100%;
+            display: block;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-family: arial;
+            color: white;
+            text-align: center;
+
+        }
+
+        li a:hover {
+            background: gray;
+            text-transform: uppercase;
+        }
+
+        .logo img {
+            position: absolute;
+            margin-top: 5px;
+            margin-left: 1px;
+
+        }
+
+        .gotopbtn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-image: url(kopce1.jpg);
+            bottom: 40px;
+            right: 50px;
+
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 22px;
+            background-repeat: no-repeat;
+            background-position: 100%;
+            background-size: cover;
+        }
+
+        .inner-footer {
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+
+        .social-links {
+            display: flex;
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-links ul {
+            padding: 5px;
+            display: flex;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+
+        .social-items {
+            list-style: none;
+        }
+
+        .social-items a {
+            padding: 10px 20px;
+            font-size: 35px;
+            color: #6cccc6;
+
+
+        }
+
+        .quick-links {
+            display: flex;
+            width: 1060px;
+            height: 70px;
+            margin: auto;
+
+        }
+
+        .quick-links ul {
+            display: flex;
+        }
+
+        .quick-items {
+            list-style: none;
+
+        }
+
+        .quick-items a {
+            text-decoration: none;
+            padding: 0px, 15px;
+            font-size: 18px;
+            color: cyan;
+            transition: all .25s;
+        }
+
+        .quick-items a:hover {
+            color: cyan;
+        }
+
+        .outer-footer {
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            background-image: url(prva.jpg);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+
+
+
+
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+
+
+        .active {
+            color: rgb(218, 15, 42);
+        }
+
+        .hero {
+            height: 55vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 span {
+            color: crimson;
+        }
+
+
+
+        .card {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            background: #65e2cd;
+        }
+
+        .card>div {
+            padding: 2rem;
+        }
+
+        .card:nth-child(even) img {
+            order: 2;
+        }
+
+        .card img {
+            height: 450px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .publish-date {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            text-transform: capitalize;
+            background: rgb(13, 182, 126);
+            color: rgb(233, 241, 245);
+            padding: .8rem 1.8rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            transition: opacity .2s ease;
+        }
+
+
+
+
+
+        @media(max-width: 1080px) {
+            .container {
+                padding: 0 5%;
+            }
+        }
+
+        @media(max-width: 700px) {
+            body {
+                font-size: 1.2rem;
+            }
+
+            .hero h1,
+
+
+            .card {
+                display: block;
+            }
+        }
+
+        .card1 {
+            color: rgb(22, 22, 20);
+            background-image: url(coment1.webp);
+            background-position: 500px;
+            background-repeat: no-repeat;
+            background-position: center;
+
+
+
+        }
+
+        .com {
+            background-image: url(border.jpg);
+            font-size: 18px;
+            border: 10px solid turquoise;
+            color: black;
+            float: center;
+            max-width: 25%;
+            display: left;
+            margin: auto;
+
+
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            height: 90%;
+            color: rgb(250, 252, 251);
+            background-image: url(planina.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        td,
+        th {
+            border: 8px solid #656b75;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-image: url(svetla.jpg);
+        }
+
+        h2 {
+            color: yellow;
+        }
+
+        .container1 {
+            position: relative;
+            margin-top: 50px;
+            background-image: url(probna.jpg);
+            width: 450px;
+            height: min-content;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 2;
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .container1 input,
+        .container1 button {
+            height: 40px;
+            width: 90%;
+            border-radius: 50px;
+            font-size: 18px;
+        }
+
+        .container1 input {
+            border: 2px solid #dde6e736;
+            padding-left: 12px;
+            margin-bottom: 12px;
+            transition: .4s;
+        }
+
+        .container1 input:focus {
+            border: 2px solid #00bcd4;
+        }
+
+        .container1 button {
+            Cursor: pointer;
+            background: #00bcd4;
+            letter-spacing: 1px;
+            transition: .4s;
+        }
+
+
+
+
+        .container1 ul {
+            position: absolute;
+            width: 450px;
+            height: fit-content;
+            background: #f0080836;
+            margin-top: 140px;
+            padding-top: 90px;
+            border-radius: 20px;
+            transition: .4s;
+        }
+
+        .container1 ul li {
+            padding: 15px;
+        }
+
+        .container1 ul li span {
+            display: flex;
+        }
+
+        .container1 ul li span p:nth-child(1) {
+            text-transform: uppercase;
+            font-size: 200px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-right: 10px;
+        }
+
+        .container1 ul li span p:nth-child(2) {
+            color: #ffffff;
+            font-size: 180px;
+            font-weight: 200;
+            margin-top: -3px;
+        }
+
+        ul li p:nth-child(2) {
+            color: #f5f5f5;
+            font-size: 100px;
+            font-weight: 400;
+            padding-top: 5px;
+        }
+
+        .list {
+            background-image: url(kommmmm.jpg);
+            font-size: 18px;
+            border: 10px solid turquoise;
+            color: black;
+            float: center;
+            max-width: 25%;
+            display: left;
+            margin: auto;
+            overflow: hidden;
+            z-index: 2;
+            border-radius: 50px;
+            transition: .4s;
+            padding-top: 5px;
+            text-transform: capitalize;
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+        input {
+            background-image: url(galerija.png);
+
+            size: 10px;
+            height: 40px;
+            width: 20%;
+            border-radius: 50px;
+            font-size: 18px;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div class="logo">
+        <a href='#'> <img src="logo.png" width="100" height="50"> </a>
+    </div>
+    <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+
+
+    <nav>
+
+
+
+        <ul>
+
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Favorite things.html">Favorite things</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="My blog.html">My blog</a></li>
+            <li><a href="Visitor survey.html">Visitor survey</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+
+
+
+        </ul>
+
+
+    </nav>
+    </a>
+
+    <div class="container">
+
+
+        <section class="hero">
+            <h1>Most <span>beautiful</span> Mountains in Switzerland</h1>
+
+        </section>
+        <h3> Search for your favorite mountain</h3>
+        <p><input id="myInput1" type="text" placeholder="Search.."></p>
+        <div id="myDIV1">
+
+            <main>
+                <section class="card">
+                    <img src="mount-san-salvatore.jpg" weight="120" height="120" alt="Plant 1">
+                    <div>
+                        <h3>1.Mount San Salvatore</h3>
+                        <p class="publish-date">Elevation: 912m</p>
+                        <p>Mount San Salvatore is part of the Lepontine Alps, which are located in the northwestern part
+                            of
+                            the Alps. It is situated in the canton of Ticino, overlooking the city of Lugano. The lake
+                            of
+                            Lugano divides this mountain and the state of Italy.</p>
+                        <a href="https://www.montesansalvatore.ch/en/" class="btn">Read more</a>
+                    </div>
+                </section>
+
+                <section class="card" data-aos="fade-left">
+                    <img src="mount-lema.jpg" weight="120" height="120" alt="Plant 2">
+                    <div>
+                        <h3>2. Mount Lema</h3>
+                        <p class="publish-date">Elevation: 1,619m</p>
+                        <p>Mount Lema, the perfect destination for mountain bike riders and hang-gliding flight lovers.
+                            Part
+                            of the Lugano Prealps, the mountain isn’t limited to these two activities. It is a very
+                            welcoming place for hikers of every level, offering them several trails and tracks to walk
+                            through. Monte Lema is known as the starting point of the famous mountain hike called
+                            Traversata. This hike leads to Mount Tamaro, situated close to the border between
+                            Switzerland
+                            and Italy. Its peak can easily be reached using the cable car from the village of
+                            Miglieglia.
+                            The cable car is available from the end of March to the beginning of November.</p>
+                        <a href="https://www.schweizmobil.ch/en/hiking-in-switzerland/services/places-of-interest/sehenswuerdigkeit-0527.html"
+                            class="btn">Read more</a>
+                    </div>
+                </section>
+
+                <section class="card" data-aos="fade-right">
+                    <img src="mount-rigi.jpg" weight="120" height="120" alt="Plant 3">
+                    <div>
+                        <h3>3. Mount Rigi</h3>
+                        <p class="publish-date">Elevation: 1,798m</p>
+                        <p>Mount Rigi, known by the locals as the Queen of the Mountains, is a breathtaking mountain
+                            massif
+                            in the Alps. It is located in the center of Switzerland near the cities of Zurich and
+                            Luzern.
+                            You can visit this destination any time you want as it offers the best conditions to its
+                            visitors in every season. However, if you are going to visit it, the morning would be the
+                            best
+                            time. It tends to get covered by clouds around noon.</p>
+                        <a href="https://www.expatolife.com/mount-rigi-kulm-switzerland/" class="btn">Read more</a>
+                    </div>
+                </section>
+
+                <section class="card" data-aos="fade-left">
+                    <img src="mount-pilatus.jpg" weight="120" height="120" alt="Plant 4">
+                    <div>
+                        <h3>4. Mount Pilatus
+                        </h3>
+                        <p class="publish-date">Elevation: 2,128m</p>
+                        <p>The magnificent Pilatus, or as it is referred to, Mount Pilatus, is a pretty mountain massif.
+                            It
+                            is located in the center of Switzerland. Its central position makes this mountain part of
+                            three
+                            cantons: Obwalden, Nidwalden, and Luzern. The highest peaks of this mountain area are
+                            situated
+                            on the border between Obwalden and Nidwalden.</p>
+                        <a href="https://en.wikipedia.org/wiki/Pilatus_(mountain)" class="btn">Read more</a>
+                    </div>
+                </section>
+
+                <section class="card" data-aos="fade-right">
+                    <img src="mount-parsenn.jpg" alt="Plant 5">
+                    <div>
+                        <h3>5. Mount Parsenn</h3>
+                        <p class="publish-date">Elevation: 2,220m</p>
+                        <p>As one of the fascinating mountains of Davos, Parsenn is mostly known as a ski resort by the
+                            locals as well as tourists.
+                            It is the largest one from the five ski resorts there, and it offers ski enthusiasts 35 ski
+                            runs. The best time to visit
+                            this mountain is around the time it opens its doors to ski admirers, from the last week of
+                            November to the last week of
+                            April. One of the reasons why this mountain is so popular among skiers is because its ski
+                            runs
+                            are suitable for all
+                            levels of skiers. You can access the mountain from Davos by the Parsenn’s funicular railway,
+                            and
+                            from Kloster by
+                            Gotschna cable car.</p>
+                        <a href="https://www.davos.ch/en/discover/mountains/parsenn" class="btn">Read more</a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <center>
+        <h3>What interest you ? </h3>
+        <input id="myInput" type="text" placeholder="Search..">
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Mountain</h2>
+                    </th>
+                    <th>
+                        <h2>Elevation</h2>
+                    </th>
+                    <th>
+                        <h2>Prefer for</h2>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                <tr>
+                    <td>Mount San Salvatore</td>
+                    <td>912m</td>
+                    <td>Hiking</td>
+                </tr>
+                <tr>
+                    <td>Mount Lema</td>
+                    <td>1,619m</td>
+                    <td>Skiing or snowboarding</td>
+                </tr>
+                <tr>
+                    <td>Mount Rigi</td>
+                    <td>1,798m</td>
+                    <td>Hiking and camping</td>
+                </tr>
+                <tr>
+                    <td>Mount Pilatus</td>
+                    <td>2,128m</td>
+                    <td>Hiking</td>
+                </tr>
+                <tr>
+                    <td>Mount Parsenn</td>
+                    <td> 2,220m</td>
+                    <td>Snowboarding & skiing</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+
+    <center>
+        <div class="container1">
+            <input type="text" placeholder="Enter your name" id="name">
+            <input type="text" aria-rowcount="5" placeholder=" Enter comment" id="comment">
+            <button onclick="add()">Submit</button>
+            <button onclick="location.reload()">Clear</button>
+        </div>
+        <ul class="list"></ul>
+    </center>
+
+    <footer class='footer'>
+        <div class='inner-footer'>
+            <div class='social links'>
+                <ul>
+                    <li class="social-items"><a href="https://www.facebook.com/hristijan.ivanoski.1/"><i
+                                class="fab fa-facebook-square"></i></a></li>
+                    <li class="social-items"><a href="https://github.com/Hristijan98/OWEB"><i
+                                class="fab fa-github-square"></i></a></li>
+                    <li class="social-items"><a href="https://www.instagram.com/hristijan.ivanoski/"><i
+                                class="fab fa-instagram"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="quick-links">
+                <ul>
+                    <li class="quick-items"><a href="Home.html">Home</a></li>
+                    <li class="quick-items"><a href="Favorite things.html">Favorite things</a></li>
+                    <li class="quick-items"><a href="Gallery.html">Gallery</a></li>
+                    <li class="quick-items"><a href="My blog.html">My Blog</a></li>
+                    <li class="quick-items"><a href="Visitor survey.html">Visitor survey</a></li>
+                    <li class="quick-items"><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="outer-footer">
+            Copyright &copy; Web Coding Pro.All Rights Reserved
+
+    </footer>
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>
