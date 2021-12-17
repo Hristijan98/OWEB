@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="= " utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My WEB</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <script>
+        const form = document.querySelector("form[name='contact-form']");
+const nameInput = document.querySelector("input[name='name']");
+const emailInput = document.querySelector("input[name='email']");
+const phoneInput = document.querySelector("input[name='phone']");
+const messageInput = document.querySelector("textarea[name='message']");
+
+nameInput.isValid = () => !!nameInput.value;
+emailInput.isValid = () => isValidEmail(emailInput.value);
+phoneInput.isValid = () => isValidPhone(phoneInput.value);
+messageInput.isValid = () => !!messageInput.value;
+
+const inputFields = [nameInput, emailInput, phoneInput, messageInput];
+
+const isValidEmail = (email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const isValidPhone = (phone) => {
+  const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  return re.test(String(phone).toLowerCase());
+};
+
+let shouldValidate = false;
+let isFormValid = false;
+
+const validateInputs = () => {
+  console.log("we are here");
+  if (!shouldValidate) return;
+
+  isFormValid = true;
+  inputFields.forEach((input) => {
+    input.classList.remove("invalid");
+    input.nextElementSibling.classList.add("hide");
+
+    if (!input.isValid()) {
+      input.classList.add("invalid");
+      isFormValid = false;
+      input.nextElementSibling.classList.remove("hide");
+    }
+  });
+};
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  shouldValidate = true;
+  validateInputs();
+  if (isFormValid) {
+    // TODO: DO AJAX REQUEST
+  }
+});
+
+inputFields.forEach((input) => input.addEventListener("input", validateInputs));
+    </script> <!--ZA funkcionalnost-->
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(contact.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: white;
+            
+        }
+
+        nav {
+            width: 100%;
+            overflow: auto;
+            background-image: url(prva.jpg);
+        }
+
+        ul {
+            padding: 0;
+            margin: 0 0 0 250px;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            width: 100%;
+            display: block;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-family: arial;
+            color: white;
+            text-align: center;
+
+        }
+
+        li a:hover {
+            background: gray;
+            text-transform: uppercase;
+        }
+
+        .logo img {
+            position: absolute;
+            margin-top: 5px;
+            margin-left: 1px;
+
+        }
+
+        .gotopbtn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-image: url(kopce1.jpg);
+            bottom: 40px;
+            right: 50px;
+
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 22px;
+        }
+
+        .inner-footer {
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+
+        .social-links {
+            display: flex;
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-links ul {
+            padding: 5px;
+            display: flex;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+
+        .social-items {
+            list-style: none;
+        }
+
+        .social-items a {
+            padding: 10px 20px;
+            font-size: 35px;
+            color: #6cccc6;
+
+
+        }
+
+        .quick-links {
+            display: flex;
+            width: 1060px;
+            height: 70px;
+            margin: auto;
+
+        }
+
+        .quick-links ul {
+            display: flex;
+        }
+
+        .quick-items {
+            list-style: none;
+
+        }
+
+        .quick-items a {
+            text-decoration: none;
+            padding: 0px, 15px;
+            font-size: 18px;
+            color: cyan;
+            transition: all .25s;
+        }
+
+        .quick-items a:hover {
+            color: rgb(8, 241, 241);
+        }
+
+        .outer-footer {
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            background-image: url(prva.jpg);
+        }
+
+        .contact {
+            position: relative;
+            min-height: 100vh;
+            padding: 50px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url(kontakt.jpg);
+            background-size: cover;
+        }
+
+        .contact .content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .contact .content h2 {
+            font-size: 36px;
+            font-weight: 500;
+            color: rgb(42, 37, 107);
+        }
+
+        .contact .content p {
+
+            font-weight: 300;
+            color: rgb(122, 8, 8);
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .container .contactInfo {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container .contactInfo .box {
+            position: relative;
+            padding: 20px 0;
+            display: flex;
+        }
+
+        .container .contactInfo .box .icon {
+            min-width: 60px;
+            height: 60px;
+            background: rgb(201, 27, 27);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 22px;
+        }
+
+        .container .contactInfo .box .text {
+            display: flex;
+            margin-left: 20px;
+            font-size: 20px;
+            color: rgb(230, 226, 247);
+            flex-direction: column;
+            font-weight: 300px;
+        }
+
+        .container .contactInfo .box .text h3 {
+            font-weight: 500;
+            color: rgb(9, 145, 145);
+        }
+
+        .contactForm {
+
+            width: 10%;
+            padding: 10%;
+            background: url(contact1.jpg);
+
+        }
+
+        .contactForm h2 {
+            font-size: 30px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .contactForm .inputBox {
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .contactForm .inputBox input,
+        .contactForm .inputBox textarea {
+            width: 100%;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            resize: none;
+        }
+
+        .contactForm .inputBox span {
+            position: absolute;
+            left: 0;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            pointer-events: none;
+            transition: 0.5s;
+            color: rgb(85, 15, 15);
+        }
+
+        .contactForm .inputBox input:focus~span,
+        .contactForm .inputBox input:valid~span .contactForm .inputBox textarea:focus~span,
+        .contactForm .inputBox textarea:valid~span {
+            color: rgb(241, 12, 43);
+            font-size: 12px;
+            transform: translateY(-20px);
+        }
+
+        .contactForm .inputBox input[type="submit"] {
+            width: 100px;
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        @media (max-width:991px) {
+            .contact {
+                padding: 50px;
+            }
+
+            .container {
+                flex-direction: column;
+            }
+
+            .container .contactInfo {
+                margin-bottom: 40px;
+            }
+
+            .container .contactInfo {
+                width: 100%;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .wrapper {
+            height: 8%;
+            width: 1300px;
+            position: center;
+            background: linear-gradient(180deg, #0d0e0d, #29cfc7, #ee09d3);
+            border-radius: 1px;
+            cursor: default;
+            animation: animate 1.5s linear infinite;
+
+        }
+
+        .wrapper .display,
+        .wrapper span {
+            position: absolute;
+            top: 8%;
+            left: 1300px;
+            transform: translate(-50%, -50%);
+        }
+
+        .wrapper .display {
+            z-index: 999;
+            height: 85px;
+            width: 345px;
+            background: #18e45c;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .display #time {
+            line-height: 85px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #000c0b, #1ebb4d, #faf6f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animate 1.5s linear infinite;
+        }
+
+        @keyframes animate {
+            100% {
+                filter: hue-rotate(90deg);
+            }
+        }
+
+        .wrapper span {
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            background: inherit;
+        }
+
+        .wrapper span:first-child {
+            filter: blur(7px);
+        }
+
+        .wrapper span:last-child {
+            filter: blur(20px);
+        }
+
+
+
+        .error {
+            color: red;
+        }
+
+        .error-border {
+            border-bottom: 1px solid red;
+
+        }
+
+        #success {
+            color: green;
+        }
+
+        button {
+            margin-top: 30px;
+            width: 90%;
+            max-width: 200px;
+            background-image: url(kopce1.jpg);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            border-radius: 3px;
+            background-repeat: no-repeat;
+            background-position: 100%;
+            background-size: cover;
+
+        }
+      
+
+        .contact-banner {
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 114, 66) 0%,
+    rgb(4, 109, 91) 100%
+  );
+  color: white;
+  padding: 40px;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+.mb-2 {
+  margin-bottom: 20px;
+}
+
+.mb-4 {
+  margin-bottom: 40px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.contact-description {
+  margin-bottom: 40px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 280px;
+  border: 1px solid rgb(0, 114, 66);
+  font-size: 18px;
+  outline: none;
+  color: #333;
+}
+
+.form-control {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hide {
+  opacity: 0;
+}
+
+textarea {
+  width: 120px;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  height: 120px;
+  font-size: 18px;
+}
+
+button {
+  color: black;
+  padding: 20px;
+  border: 1px solid rgb(0, 114, 66);
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  color: rgb(0, 114, 66);
+}
+
+button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 114, 66) 0%,
+    rgb(4, 109, 91) 100%
+  );
+  color: white;
+}
+
+form {
+  padding: 1px;
+}
+
+hr {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 1px;
+  border: none;
+  background-color: rgb(0, 114, 66);
+}
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div class="logo">
+        <a href='#'> <img src="logo.png" width="100" height="50"> </a>
+    </div>
+    <a class="gotopbtn" href="#"> <i class="fas fa-arrow-up"></i> </a>
+
+    <nav>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Favorite things.html">Favorite things</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="My blog.html">My blog</a></li>
+            <li><a href="Visitor survey.html">Visitor survey</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    </a>
+
+
+
+
+    <div class="wrapper">
+        <div class="display">
+            <div id="time"></div>
+        </div>
+        <span></span>
+        <span></span>
+    </div>
+    <script>
+        setInterval(() => {
+            const time = document.querySelector(".display #time");
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let day_night = "AM";
+            if (hours > 12) {
+                day_night = "PM";
+                hours = hours - 12;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            time.textContent = hours + ":" + minutes + ":" + seconds + " " + day_night;
+        });
+    </script>
+
+
+    <section class="Contact">
+        <div class="content">
+            <h2>Contact Us</h2>
+
+        </div>
+        <div class="container">
+            <div class="contactInfo">
+                <div class="box">
+                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="text">
+                        <h3>Address</h3>
+                        <p>Ulica broj,<br>Ne znam koj<br>####</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon"><i class="fas fa-phone"></i></div>
+                    <div class="text">
+                        <h3>Phone</h3>
+                        <p>2 2 3 3 0 5 te cekam draga javi se</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                    <div class="text">
+                        <h3>Email</h3>
+                        <p>hihac73@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contactForm">
+                <form name="contact-form">
+                    <div class="form-control">
+                      <label>Full Name</label>
+                      <input name="name"
+                        placeholder="First and Last Name" />
+                      <div class="error hide">Name is required</div>
+                    </div>
+              
+                    <div class="form-control">
+                      <label>Email</label>
+                      <input
+                        name="email"
+                        placeholder="e.g. your_email@example.com"
+                      />
+                      <div class="error hide">Email is invalid</div>
+                    </div>
+              
+                    <div class="form-control">
+                      <label>Phone</label>
+                      <input name="phone"
+                      ></input>
+                      <div class="error hide">Phone is invalid</div>
+                    </div>
+              
+                    <div class="form-control">
+                      <label>Message</label>
+                      <textarea name="message"></textarea>
+                      <div class="error hide">Message is required</div>
+                    </div>
+              
+                    <hr />
+              
+                    <button type="submit">SUBMIT FORM</button>
+                  </form>
+                
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <footer class='footer'>
+        <div class='inner-footer'>
+            <div class='social links'>
+                <ul>
+                    <li class="social-items"><a href="https://www.facebook.com/hristijan.ivanoski.1/"><i
+                                class="fab fa-facebook-square"></i></a></li>
+                    <li class="social-items"><a href="https://github.com/Hristijan98/OWEB"><i
+                                class="fab fa-github-square"></i></a></li>
+                    <li class="social-items"><a href="https://www.instagram.com/hristijan.ivanoski/"><i
+                                class="fab fa-instagram"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="quick-links">
+                <ul>
+                    <li class="quick-items"><a href="Home.html">Home</a></li>
+                    <li class="quick-items"><a href="Favorite things.html">Favorite things</a></li>
+                    <li class="quick-items"><a href="Gallery.html">Gallery</a></li>
+                    <li class="quick-items"><a href="My blog.html">My Blog</a></li>
+                    <li class="quick-items"><a href="Visitor survey.html">Visitor survey</a></li>
+                    <li class="quick-items"><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="outer-footer">
+            Copyright &copy; Web Coding Pro.All Rights Reserved
+
+    </footer>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>
